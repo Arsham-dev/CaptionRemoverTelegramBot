@@ -12,72 +12,50 @@ const messageHanlder = (Bot: Telegraf<Context<Update>>) => {
     const videoMessage = ctx.message as Message.VideoMessage
 
     if (videoMessage.video) {
-      await ctx.replyWithVideo({
-        source: videoMessage.video.file_id,
-      })
+      await ctx.sendVideo(videoMessage.video.file_id)
       return
     }
     const photoMessage = ctx.message as Message.PhotoMessage
 
     if (photoMessage.photo) {
-      await ctx.replyWithPhoto({
-        source: photoMessage.photo[0].file_id,
-      })
+      await ctx.sendPhoto(photoMessage.photo[0].file_id)
       return
     }
 
     const doucmentMessage = ctx.message as Message.DocumentMessage
 
     if (doucmentMessage.document) {
-      await ctx.replyWithDocument({
-        source: doucmentMessage.document.file_id,
-      })
+      await ctx.sendDocument(doucmentMessage.document.file_id)
       return
     }
     const audioMessage = ctx.message as Message.AudioMessage
 
     if (audioMessage.audio) {
-      await ctx.replyWithAudio({
-        source: audioMessage.audio.file_id,
-      })
+      await ctx.sendAudio(audioMessage.audio.file_id)
       return
     }
     const voiceMessage = ctx.message as Message.VoiceMessage
 
     if (voiceMessage.voice) {
-      await ctx.replyWithVoice({
-        source: voiceMessage.voice.file_id,
-      })
+      await ctx.sendVoice(voiceMessage.voice.file_id)
       return
     }
     const animationMessage = ctx.message as Message.AnimationMessage
 
     if (animationMessage.animation) {
-      await ctx.replyWithAnimation({
-        source: animationMessage.animation.file_id,
-      })
+      await ctx.sendAnimation(animationMessage.animation.file_id)
       return
     }
     const stickerMessage = ctx.message as Message.StickerMessage
 
     if (stickerMessage.sticker) {
-      await ctx.replyWithSticker({
-        source: stickerMessage.sticker.file_id,
-      })
+      await ctx.sendSticker(stickerMessage.sticker.file_id)
       return
     }
     const videoNoteMessage = ctx.message as Message.VideoNoteMessage
 
     if (videoNoteMessage.video_note) {
-      await ctx.replyWithVideoNote({
-        source: videoNoteMessage.video_note.file_id,
-      })
-      return
-    }
-    const locationMessage = ctx.message as Message.LocationMessage
-
-    if (locationMessage.location) {
-      await ctx.replyWithLocation(locationMessage.location.latitude, locationMessage.location.longitude)
+      await ctx.sendVideoNote(videoNoteMessage.video_note.file_id)
     }
   })
 }
