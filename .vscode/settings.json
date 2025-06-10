@@ -5,7 +5,5 @@
   "eslint.validate": ["javascript", "typescript", "json"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
-  "editor.fontSize": 14,
-  "editor.minimap.sectionHeaderFontSize": 9
+  "editor.formatOnSave": true
 }

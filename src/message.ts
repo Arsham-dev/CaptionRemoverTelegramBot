@@ -5,7 +5,9 @@ const messageHanlder = (Bot: Telegraf<Context<Update>>) => {
   Bot.on('message', async (ctx) => {
     const message = ctx.message as Message.CaptionableMessage
     if (!message.caption) {
-      await ctx.reply('Please send me a photo or video with caption to remove caption from it.')
+      await ctx.reply(
+        'Please send me a photo or video with caption to remove caption from it.'
+      )
       return
     }
 
@@ -57,6 +59,8 @@ const messageHanlder = (Bot: Telegraf<Context<Update>>) => {
     if (videoNoteMessage.video_note) {
       await ctx.sendVideoNote(videoNoteMessage.video_note.file_id)
     }
+
+    await ctx.telegram.deleteMessage(ctx.chat.id, ctx.message.message_id)
   })
 }
 export default messageHanlder
